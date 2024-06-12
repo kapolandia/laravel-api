@@ -18,7 +18,7 @@ class ProjectController extends Controller
     }
 
     public function show($slug){
-        $project = Project::where('slug', '=', $slug)->whit('type','technologies')->first();
+        $project = Project::where('slug', '=', $slug)->with('type','technologies')->first();
 
         if($project){
             $data = [
@@ -32,6 +32,6 @@ class ProjectController extends Controller
             ];
         }
 
-        return responde()->json($data);
+        return response()->json($data);
     }
 }
